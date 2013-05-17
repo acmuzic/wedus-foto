@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<title>&nbsp;</title>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="stylesheet" href="css/jquery.mobile-1.3.1.min.css" />
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script src="js/jquery.mobile-1.3.1.min.js"></script>   
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" charset="utf-8" src="cordova-2.7.0.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/shake.js"></script>
+	</head>
+	<body>
+		<!-- Start of first page I -->
+		<div data-role="page" id="page1">
+			<!-- Header -->
+			<div data-role="header">
+				<h1>Wedus Foto</h1>
+
+			</div>
+			<!-- /header -->
+			<!-- Content    -->
+            <div data-role="content" class="content">
+                <video width="480" id="movie" controls>
+                	<source src="videos/movie.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+                </video>
+                <a href="#" data-role="button" data-inline="true" onclick="playPause()">Play/Pause</a>
+            <a href="fotos.html" data-ajax="false" data-role="button" data-inline="true">Seguir</a>
+			</div>
+			<!-- /content -->
+			<!-- footer -->
+            <div data-role="footer" data-id="foo1" data-position="fixed">
+                <!-- navbar -->
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="casamiento.html" class="ui-btn-active ui-state-persist" data-transition="slideup">Casamiento</a></li>
+                        <li><a href="fotos.html" rel="external" data-transition="slideup">Fotos</a></li>
+                        <li><a href="suma.html" rel="external" data-transition="slideup">Sum&aacute; tus fotos</a></li>
+                    </ul>
+                </div>
+                <!-- /navbar -->
+            </div>
+			<!-- /footer -->
+		</div>
+		<!-- /page -->
+
+	</body>
+</html>
+<script>
+    var myVideo=document.getElementById("movie"); 
+
+	function playPause()
+	{ 
+	if (myVideo.paused) 
+	  myVideo.play(); 
+	else 
+	  myVideo.pause(); 
+	}
+
+document.addEventListener('deviceready', function() {
+	var shaker = new Accelerometer();
+	
+	var tracker = shaker.watchAcceleration (
+		function (measure) {
+		// This one fires for success
+			if (measure.is_updating == true) {
+			   return;
+			} else {
+			   if (measure.x >= 1.5) {
+					//Disparo movimiento
+					alert("Shake it baby");
+			   }
+			}
+		},
+		function (measure) {
+		// This one fires for errors, which I'm ignoring
+		},
+		{ frequency : 500}
+	);
+});
+</script>

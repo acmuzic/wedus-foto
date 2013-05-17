@@ -1,0 +1,13 @@
+@charset "UTF-8";
+/* CSS Document */
+
+.content
+{
+	background-color:#DDD;
+}
+
+.photo
+{
+	width:280px;
+	margin:10px 10px 10px 0;
+}
