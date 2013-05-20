@@ -82,3 +82,11 @@ document.addEventListener('deviceready', function() {
 	);
 });
 </script>
+<script type='text/javascript'>
+    document.getElementById('movie').addEventListener('ended',myHandler,false);
+    function myHandler(e) {
+        if(!e) { e = window.event; }
+        // What you want to do after the event
+		alert('video finalizo');
+    }
+</script>
